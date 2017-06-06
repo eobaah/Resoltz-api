@@ -7,9 +7,7 @@ module.exports = function (app) {
 };
 
 router.get('/api', function (req, res, next) {
-  var apis = [new Resoltzapi(), new Resoltzapi()];
-    res.render('index', {
-      title: 'Generator-Express MVC',
-      apis: apis
-    });
+  Resoltzapi.getAllUsers()
+    .then( users => {
+      response.send( users );
 });

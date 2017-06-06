@@ -6,8 +6,8 @@ const db = pgp( CONNECTION_STRING )
 
 const Resoltzapi = {
 
-  getAllBooks: () => {
-    return db.any(`SELECT * FROM bookstore ORDER BY title ASC`,[])
+  getAllUsers: () => {
+    return db.any(`SELECT * FROM user_details ORDER BY dob ASC`,[])
   },
 
   getBook: (id) => {
