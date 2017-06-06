@@ -8,7 +8,7 @@ var config = {
     app: {
       name: 'resoltz-api'
     },
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 1337,
   },
 
   test: {
@@ -16,7 +16,7 @@ var config = {
     app: {
       name: 'resoltz-api'
     },
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 1337,
   },
 
   production: {
@@ -24,7 +24,7 @@ var config = {
     app: {
       name: 'resoltz-api'
     },
-    port: process.env.PORT || 3000,
+    port: process.env.PORT || 1337,
   }
 };
 
