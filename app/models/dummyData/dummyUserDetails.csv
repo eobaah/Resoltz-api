@@ -1,0 +1,10 @@
+UserId,Gender,DOB,CurrentWeight,GoalWeight,HeightFeet,HeightInches,Goal,Intensity,Referrer,ProfileImageUri,FavoriteActivities
+1,male,2/8/95,180,185,5,10,,,,,Running
+2,female,3/1/95,150,140,5,3,,,,,Cycling
+3,male,10/5/95,192,192,6,3,,,,,Basketball
+4,female,12/19/95,144,134,5,9,,,,,Weights
+5,male,4/8/95,202,187,5,8,,,,,Running
+6,female,11/8/95,113,118,6,1,,,,,Cycling
+7,male,11/6/95,166,181,5,7,,,,,Basketball
+8,female,8/3/95,122,122,6,2,,,,,Weights
+9,male,8/14/95,250,220,5,11,,,,,Cardio
