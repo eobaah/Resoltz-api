@@ -1,15 +1,15 @@
 var express = require('express'),
   router = express.Router(),
-  Article = require('../models/article');
+  Resoltzapi = require('../models/article');
 
 module.exports = function (app) {
   app.use('/', router);
 };
 
-router.get('/', function (req, res, next) {
-  var articles = [new Article(), new Article()];
+router.get('/api', function (req, res, next) {
+  var apis = [new Resoltzapi(), new Resoltzapi()];
     res.render('index', {
       title: 'Generator-Express MVC',
-      articles: articles
+      apis: apis
     });
 });
