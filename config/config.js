@@ -9,6 +9,7 @@ var config = {
       name: 'resoltz-api'
     },
     port: process.env.PORT || 3000,
+    db: 'postgres://localhost/resoltz-api-development'
   },
 
   test: {
@@ -17,6 +18,7 @@ var config = {
       name: 'resoltz-api'
     },
     port: process.env.PORT || 3000,
+    db: 'postgres://localhost/resoltz-api-test'
   },
 
   production: {
@@ -24,8 +26,9 @@ var config = {
 	user: 'apigene@resoltz-api-pg',
 	password: 'Resoltz21',
 	database: 'resoltzapi',
-	port: 3000,
+	port: process.env.PORT || 3000,
 	ssl: true,
+  db: 'postgres://localhost/resoltz-api-production'
   }
 };
 

@@ -9,9 +9,9 @@ var compress = require('compression');
 var methodOverride = require('method-override');
 
 module.exports = function(app, config) {
-  var env = process.env.NODE_ENV || 'production';
+  var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
-  app.locals.ENV_DEVELOPMENT = env == 'production';
+  app.locals.ENV_DEVELOPMENT = env == 'development';
 
   app.set('views', config.root + '/app/views');
   app.set('view engine', 'pug');
@@ -38,7 +38,7 @@ module.exports = function(app, config) {
     next(err);
   });
 
-  if(app.get('env') === 'production'){
+  if(app.get('env') === 'development'){
     app.use(function (err, req, res, next) {
       res.status(err.status || 500);
       res.render('error', {
