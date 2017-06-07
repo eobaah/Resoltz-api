@@ -7,7 +7,7 @@ module.exports = function (app) {
 };
 
 router.get('/', function (request, response, next) {
-  response.render( 'index', {title: 'title'} );
+  response.render( 'index', {title: 'Welcome to the Resoltz API'} );
 });
 
 router.get('/api/users', function (request, response, next) {
