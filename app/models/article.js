@@ -1,10 +1,19 @@
 const promise = require( 'bluebird' )
 const options = { promiseLib: promise }
+// const cn = {
+//   host: 'resoltz-api-pg.postgres.database.azure.com',
+//   port: 5432,
+//   database: 'resoltzapi',
+//   user: 'apigene@resoltz-api-pg',
+//   password: 'Resoltz21',
+//   ssl: true
+// }
+
 const pgp = require( 'pg-promise' )( options )
 const CONNECTION_STRING = `postgres://apigene@resoltz-api-pg:Resoltz21@resoltz-api-pg.postgres.database.azure.com:5432/resoltzapi?ssl=true`
 
-
 const db = pgp( CONNECTION_STRING )
+// const db = pgp( cn )
 
 const Resoltzapi = {
 

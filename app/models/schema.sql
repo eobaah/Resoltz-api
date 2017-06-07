@@ -43,8 +43,8 @@ CREATE TABLE IF NOT EXISTS measurements(
  MaxHeartRate INTEGER
 );
 
-COPY user_details from '/Users/baahmac/Documents/LearnersGuild/LgProjects/Resoltz-api/app/models/dummyData/dummyUserDetails.csv' DELIMITER ',' CSV HEADER;
+COPY user_details from '/d/home/site/wwwroot/app/models/dummyData/dummyUserDetails.csv' DELIMITER ',' CSV HEADER;
 
-COPY user_school_details from '/Users/baahmac/Documents/LearnersGuild/LgProjects/Resoltz-api/app/models/dummyData/dummySchoolDetails.csv' DELIMITER ',' CSV HEADER;
+COPY user_school_details from '/d/home/site/wwwroot/app/models/dummyData/dummySchoolDetails.csv' DELIMITER ',' CSV HEADER;
 
-COPY measurements from '/Users/baahmac/Documents/LearnersGuild/LgProjects/Resoltz-api/app/models/dummyData/dummyMeasurements.csv' DELIMITER ',' CSV HEADER;
+COPY measurements from '/d/home/site/wwwroot/app/models/dummyData/dummyMeasurements.csv' DELIMITER ',' CSV HEADER;
