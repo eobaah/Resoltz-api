@@ -8,8 +8,6 @@ module.exports = function (app) {
 
 router.get('/', function (request, response, next) {
   response.render( 'index', {title: 'title'} );
-    })
-    .catch(next)
 });
 
 router.get('/api/users', function (request, response, next) {
