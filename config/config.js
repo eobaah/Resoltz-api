@@ -3,13 +3,13 @@ var path = require('path'),
     env = process.env.NODE_ENV || 'production';
 
 var config = {
-  development: {
-    root: rootPath,
-    app: {
-      name: 'resoltz-api'
-    },
-    port: process.env.PORT || 3000,
-  },
+  // development: {
+  //   root: rootPath,
+  //   app: {
+  //     name: 'resoltz-api'
+  //   },
+  //   port: process.env.PORT || 3000,
+  // },
 
   test: {
     root: rootPath,
@@ -23,7 +23,7 @@ var config = {
     host: 'resoltz-api-pg.postgres.database.azure.com',
 	user: 'apigene@resoltz-api-pg',
 	password: 'Resoltz21',
-	database: 'mypgsqldb',
+	database: 'resoltzapi',
 	port: 5432,
 	ssl: true,
   }
