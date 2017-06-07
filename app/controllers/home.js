@@ -6,6 +6,12 @@ module.exports = function (app) {
   app.use('/', router);
 };
 
+router.get('/', function (request, response, next) {
+  response.render( 'index', {title: 'title'} );
+    })
+    .catch(next)
+});
+
 router.get('/api/users', function (request, response, next) {
   Resoltzapi.getAllUsers()
     .then( users => {
