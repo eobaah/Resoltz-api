@@ -19,6 +19,14 @@ const Resoltzapi = {
 
   getAllUsers: () => {
     return db.any(`SELECT * FROM user_details ORDER BY dob ASC`,[])
+  },
+
+  getAllUsersMeasurements: () => {
+    return db.any(`SELECT * FROM measurements ORDER BY AgendaSlotId ASC`,[])
+  },
+
+  getAllUsersSchool: () => {
+    return db.any(`SELECT * FROM user_school_details ORDER BY UserId DESC`,[])
   }
   //
   // getBook: (id) => {

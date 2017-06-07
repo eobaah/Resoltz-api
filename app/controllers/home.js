@@ -6,8 +6,24 @@ module.exports = function (app) {
   app.use('/', router);
 };
 
-router.get('/api', function (request, response, next) {
+router.get('/api/users', function (request, response, next) {
   Resoltzapi.getAllUsers()
+    .then( users => {
+      response.send( users );
+    })
+    .catch(next)
+});
+
+router.get('/api/measurements', function (request, response, next) {
+  Resoltzapi.getAllUsersMeasurements()
+    .then( users => {
+      response.send( users );
+    })
+    .catch(next)
+});
+
+router.get('/api/school', function (request, response, next) {
+  Resoltzapi.getAllUsersSchool()
     .then( users => {
       response.send( users );
     })
