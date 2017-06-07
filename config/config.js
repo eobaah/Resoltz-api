@@ -22,6 +22,10 @@ var config = {
   },
 
   production: {
+    root: rootPath,
+    app: {
+      name: 'resoltz-api'
+    },
     host: 'http://api-resoltz.azurewebsites.net',
   	user: 'apigene',
   	password: 'Resoltz21',
