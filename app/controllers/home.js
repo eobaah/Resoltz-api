@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const path = require( 'path' );
 const { db, getAllPosts, getPost, createPost, editPost, deletePost } = require( '../models/article' );
-const moment = require( 'moment' )
+const moment = require( 'moment' );
 
 module.exports = function (app) {
   app.use('/', router);
