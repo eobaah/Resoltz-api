@@ -66,4 +66,4 @@ const Resoltzapi = {
   // }
 }
 
-module.exports = Resoltzapi;
+module.exports = Resoltzapi, db;
