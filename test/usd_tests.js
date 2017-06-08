@@ -15,12 +15,45 @@ chai.use(chaiHttp);
 
 
 describe('GET /api/users', function() {
-  it.only('respond with json with all users', function(done) {
+  it('happy path to get json with all users', function(done) {
     chai.request(server)
     .get('/api/users')
     .end(function (err, res) {
-      console.log( "======> response", res.body )
-      expect(res).to.have.status(200);
+      expect(res.body).to.have.length(9);
+      done()
+    });
+  });
+});
+
+describe('GET /api/users', function() {
+  it.only('sad path to get json with an incorrest route for user instead of users', function(done) {
+    chai.request(server)
+    .get('/api/user')
+    .end(function (err, res) {
+      expect(err.status).to.equal(404);
+      done();
+    });
+  });
+});
+
+describe('GET /api/users', function() {
+  it('happy path to get json with of users', function(done) {
+    chai.request(server)
+    .get('/api/users')
+    .end(function (err, res) {
+      expect(res.status).to.equal(200);
+      done();
+    });
+  });
+});
+
+
+describe('POST /api/createuser', function() {
+  it('happy path to get json with all users', function(done) {
+    chai.request(server)
+    .get('/api/users')
+    .end(function (err, res) {
+      expect(res.body).to.have.length(9);
       done()
     });
   });
