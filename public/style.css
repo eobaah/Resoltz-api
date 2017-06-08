@@ -1,0 +1,21 @@
+header {
+  background-color: darkgrey;
+  padding: .5%;
+  top: 0;
+  position: sticky;
+}
+#content {
+  background-color: lightgrey;
+}
+#nav-buttons {
+  text-align: center;
+}
+footer {
+  background-color: darkgrey;
+  padding: .5%;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  align-self: center;
+
+}
