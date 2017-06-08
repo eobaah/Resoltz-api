@@ -1,25 +1,26 @@
 const promise = require( 'bluebird' )
 const options = { promiseLib: promise }
-// const cn = {
-//   host: 'resoltz-api-pg.postgres.database.azure.com',
-//   port: 5432,
-//   database: 'resoltzapi',
-//   user: 'apigene@resoltz-api-pg',
-//   password: 'Resoltz21',
-//   ssl: true
-// }
-
 const pgp = require( 'pg-promise' )( options )
 const CONNECTION_STRING = `postgres://apigene@resoltz-api-pg:Resoltz21@resoltz-api-pg.postgres.database.azure.com:5432/resoltzapi?ssl=true`
 
 const db = pgp( CONNECTION_STRING )
-// const db = pgp( cn )
 
 const Resoltzapi = {
 
   getAllUsers: () => {
     return db.any(`SELECT * FROM user_details ORDER BY dob ASC`,[])
   },
+
+  createUser: ( { title, author, preview, genre, image_url }) => {
+    return db.any(
+      `INSERT INTO user_details
+        ( Gender, CurrentWeight, GoalWeight, HeightFeet, HeightInches, Goal, Intensity, Referrer, ProfileImageUri, FavoriteActivities  )
+      VALUES
+        ( $1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+      [ Gender, CurrentWeight, GoalWeight, HeightFeet, HeightInches, Goal, Intensity, Referrer, ProfileImageUri, FavoriteActivities ]
+    )
+  },
+
 
   getAllUsersMeasurements: () => {
     return db.any(`SELECT * FROM measurements ORDER BY AgendaSlotId ASC`,[])
@@ -47,16 +48,7 @@ const Resoltzapi = {
   //   return db.none(`DELETE FROM bookstore WHERE id=$1`,[id])
   // },
   //
-  // createBook: ( { title, author, preview, genre, image_url }) => {
-  //   return db.any(
-  //     `INSERT INTO bookstore
-  //       ( title, author, preview, genre, image_url )
-  //     VALUES
-  //       ( $1, $2, $3, $4, $5)`,
-  //     [ title, author, preview, genre, image_url ]
-  //   )
-  // },
-  //
+
   // editBook: ( id, book ) => {
   //   return db.oneOrNone(
   //      `UPDATE bookstore
@@ -66,4 +58,4 @@ const Resoltzapi = {
   // }
 }
 
-module.exports = Resoltzapi, db;
+module.exports = {Resoltzapi, db};

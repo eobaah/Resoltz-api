@@ -1,13 +1,43 @@
-const server = require('../config/express');
+const server = require('../app');
+
 const express = require('express');
 const app = express();
 const router = express.Router();
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const expect = require('chai').expect;
+const expect = chai.expect;
+// const request = require('supertest');
+
 const {Resoltzapi, db} = require('../app/models/article');
 
 chai.use(chaiHttp);
+
+
+
+describe('GET /api/users', function() {
+  it.only('respond with json with all users', function(done) {
+    chai.request(server)
+    .get('/api/users')
+    .end(function (err, res) {
+      console.log( "======> response", res.body )
+      expect(res).to.have.status(200);
+      done()
+    });
+  });
+});
+
+// describe('GET /api/users', function() {
+//   it('respond with json with all users', function() {
+//     return request(app)
+//       .get('/api/users')
+//       .set('Accept', 'application/json')
+//       .expect(200)
+//       console.log("response",response)
+//       .then(response => {
+//           assert(response.body.email, 'foo@bar.com')
+//       })
+//   });
+// });
 
 describe('getAllUsers', () => {
   it('does function exist', () => {
@@ -15,23 +45,23 @@ describe('getAllUsers', () => {
     })
 });
 
-describe('getAllUsers', () => {
-  it.only('should return status code 123',
-  Resoltzapi.getAllUsers()
-    .then( users => {
-      response.send( users );
-    })
-    .catch(next)
-});
-  ( done ) => {
-    chai.request(server)
-      .get('/api/users')
-      .end( ( err, response ) => {
-        expect(err.status).to.equal(123);
-       done();
-      })
-  });
-});
+// describe('getAllUsers', () => {
+//   it.only('should return status code 123',
+//   Resoltzapi.getAllUsers()
+//     .then( users => {
+//       response.send( users );
+//     })
+//     .catch(next)
+// });
+//   ( done ) => {
+//     chai.request(server)
+//       .get('/api/users')
+//       .end( ( err, response ) => {
+//         expect(err.status).to.equal(123);
+//        done();
+//       })
+//   });
+// });
 
 // describe('getThisUserSchool', () => {
 //     it('should return user details objects', () => {
