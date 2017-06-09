@@ -12,7 +12,5 @@ const Resoltzapi = {
 
   }
 }
-Resoltzapi.getAllUsersMeasurements().then( results => {
-  console.log(results);
-})
+
 module.exports = {Resoltzapi}
