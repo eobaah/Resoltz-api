@@ -1,8 +1,11 @@
 header {
   background-color: darkgrey;
   padding: .5%;
+  position: fixed;
   top: 0;
-  position: sticky;
+  z-index: 100;
+  width: 100%;
+  margin-bottom: 2%;
 }
 #content {
   background-color: lightgrey;
@@ -10,11 +13,14 @@ header {
 #nav-buttons {
   text-align: center;
 }
+#search {
+  text-align: center;
+}
 footer {
   background-color: darkgrey;
   padding: .5%;
   bottom: 0;
-  position: absolute;
+  position: sticky;
   width: 100%;
   align-self: center;
 
