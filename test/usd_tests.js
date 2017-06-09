@@ -6,7 +6,8 @@ const router = express.Router();
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = chai.expect;
-// const request = require('supertest');
+const should = require('chai').should()
+
 
 const {Resoltzapi, db} = require('../app/models/article');
 
@@ -67,18 +68,18 @@ describe('POST /api/createuser', function() {
            .post('/api/users/create')
            .send(user)
            .end( (err, res) => {
-               res.body.should.be.a('object');
-               res.body.book.should.have.property('Gender');
-               res.body.book.should.have.property('Dob');
-               res.body.book.should.have.property('CurrentWeight');
-               res.body.book.should.have.property('GoalWeight');
-               res.body.book.should.have.property('HeightFeet');
-               res.body.book.should.have.property('HeightInches');
-               res.body.book.should.have.property('Goal');
-               res.body.book.should.have.property('Intensity');
-               res.body.book.should.have.property('Referrer');
-               res.body.book.should.have.property('ProfileImageUri');
-               res.body.book.should.have.property('FavoriteActivities');
+               expect(res.body).to.be.a('array');
+               res.body[0].should.have.property('gender');
+               res.body[0].should.have.property('dob');
+               res.body[0].should.have.property('currentweight');
+               res.body[0].should.have.property('goalweight');
+               res.body[0].should.have.property('heightfeet');
+               res.body[0].should.have.property('heightinches');
+               res.body[0].should.have.property('goal');
+               res.body[0].should.have.property('intensity');
+               res.body[0].should.have.property('referrer');
+               res.body[0].should.have.property('profileimageuri');
+               res.body[0].should.have.property('favoriteactivities');
              done();
            } );
   });
