@@ -26,7 +26,7 @@ describe('GET /api/users', function() {
 });
 
 describe('GET /api/users', function() {
-  it.only('sad path to get json with an incorrest route for user instead of users', function(done) {
+  it('sad path to get json with an incorrest route for user instead of users', function(done) {
     chai.request(server)
     .get('/api/user')
     .end(function (err, res) {
@@ -49,72 +49,43 @@ describe('GET /api/users', function() {
 
 
 describe('POST /api/createuser', function() {
-  it('happy path to get json with all users', function(done) {
-    chai.request(server)
-    .get('/api/users')
-    .end(function (err, res) {
-      expect(res.body).to.have.length(9);
-      done()
-    });
+  it.only('it adds a new user ', (done) => {
+       let user = {
+         Gender: "Female",
+         Dob: '1996-01-01',
+         CurrentWeight: 144,
+         GoalWeight: 139,
+         HeightFeet: 5,
+         HeightInches: 8,
+         Goal: "Get slim",
+         Intensity: "Beginner",
+         Referrer: "Eugene",
+         ProfileImageUri: "https://api.adorable.io/avatars/92/abott@adorable.png",
+         FavoriteActivities: "Judo"
+       }
+       chai.request(server)
+           .post('/api/users/create')
+           .send(user)
+           .end( (err, res) => {
+               res.body.should.be.a('object');
+               res.body.book.should.have.property('Gender');
+               res.body.book.should.have.property('Dob');
+               res.body.book.should.have.property('CurrentWeight');
+               res.body.book.should.have.property('GoalWeight');
+               res.body.book.should.have.property('HeightFeet');
+               res.body.book.should.have.property('HeightInches');
+               res.body.book.should.have.property('Goal');
+               res.body.book.should.have.property('Intensity');
+               res.body.book.should.have.property('Referrer');
+               res.body.book.should.have.property('ProfileImageUri');
+               res.body.book.should.have.property('FavoriteActivities');
+             done();
+           } );
   });
 });
-
-// describe('GET /api/users', function() {
-//   it('respond with json with all users', function() {
-//     return request(app)
-//       .get('/api/users')
-//       .set('Accept', 'application/json')
-//       .expect(200)
-//       console.log("response",response)
-//       .then(response => {
-//           assert(response.body.email, 'foo@bar.com')
-//       })
-//   });
-// });
 
 describe('getAllUsers', () => {
   it('does function exist', () => {
       expect( Resoltzapi.getAllUsers ).to.be.a( 'function' );
     })
 });
-
-// describe('getAllUsers', () => {
-//   it.only('should return status code 123',
-//   Resoltzapi.getAllUsers()
-//     .then( users => {
-//       response.send( users );
-//     })
-//     .catch(next)
-// });
-//   ( done ) => {
-//     chai.request(server)
-//       .get('/api/users')
-//       .end( ( err, response ) => {
-//         expect(err.status).to.equal(123);
-//        done();
-//       })
-//   });
-// });
-
-// describe('getThisUserSchool', () => {
-//     it('should return user details objects', () => {
-//       chai.request(app)
-//         .get('/api/:usd_id')
-//         expect(res).to.have.status(123);
-//         done();
-//       })
-//   });
-//
-// describe('putNewUserSchoolDetails' () => {
-//   it('should put new user info in database', () => {
-//     chai.request(app)
-//     .put('/api')
-//     .send({ password: '123', confirmPassword: '123' })
-//     .then(function (res) {
-//        expect(res).to.have.status(200);
-//     })
-//     .catch(function (err) {
-//        throw err;
-//     });
-//   })
-// })

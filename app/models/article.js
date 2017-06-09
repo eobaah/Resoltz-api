@@ -1,7 +1,8 @@
 const promise = require( 'bluebird' )
 const options = { promiseLib: promise }
 const pgp = require( 'pg-promise' )( options )
-const CONNECTION_STRING = `postgres://apigene@resoltz-api-pg:Resoltz21@resoltz-api-pg.postgres.database.azure.com:5432/resoltzapi?ssl=true`
+// const CONNECTION_STRING = `postgres://apigene@resoltz-api-pg:Resoltz21@resoltz-api-pg.postgres.database.azure.com:5432/resoltzapi?ssl=true`
+const CONNECTION_STRING = `pg://${process.env.USER}@localhost:5432/resoltzapi`
 
 const db = pgp( CONNECTION_STRING )
 
@@ -10,14 +11,23 @@ const Resoltzapi = {
   getAllUsers: () => {
     return db.any(`SELECT * FROM user_details ORDER BY dob ASC`,[])
   },
-
-  createUser: ( { title, author, preview, genre, image_url }) => {
+  //
+  // createUser: ({Gender}) => {
+  //   console.log( "======> gender", Gender )
+  //   return db.any(
+  //     `INSERT INTO user_details
+  //       ( Gender )
+  //     VALUES
+  //       ( $1 )`,
+  //     [Gender]
+  //   )
+  createUser: ( { Gender, Dob, CurrentWeight, GoalWeight, HeightFeet, HeightInches, Goal, Intensity, Referrer, ProfileImageUri, FavoriteActivities  } ) => {
     return db.any(
       `INSERT INTO user_details
-        ( Gender, CurrentWeight, GoalWeight, HeightFeet, HeightInches, Goal, Intensity, Referrer, ProfileImageUri, FavoriteActivities  )
+        ( Gender, Dob, CurrentWeight, GoalWeight, HeightFeet, HeightInches, Goal, Intensity, Referrer, ProfileImageUri, FavoriteActivities  )
       VALUES
-        ( $1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
-      [ Gender, CurrentWeight, GoalWeight, HeightFeet, HeightInches, Goal, Intensity, Referrer, ProfileImageUri, FavoriteActivities ]
+        ( $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`,
+      [ Gender, Dob, CurrentWeight, GoalWeight, HeightFeet, HeightInches, Goal, Intensity, Referrer, ProfileImageUri, FavoriteActivities ]
     )
   },
 

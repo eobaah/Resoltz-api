@@ -10,7 +10,6 @@ router.get('/', function (request, response, next) {
   response.render( 'index', {title: 'Welcome to the Resoltz API'} );
 });
 
-
 router.get('/api/users', function (request, response, next) {
   Resoltzapi.getAllUsers()
     .then( users => {
@@ -20,14 +19,9 @@ router.get('/api/users', function (request, response, next) {
 });
 
 router.post('/api/users/create', function (request, response, next) {
-  console.console.log( "I have the way" )
-  const users = request.body
-  console.console.log( "======> users", request.body )
-  Resoltzapi.createUser()
-    .then( (users) => {
-      response.redirect( '/' );
-    })
-    .catch(next)
+  const user = request.body
+  Resoltzapi.createUser(user)
+    .then( user => response.redirect('/api/users'));
 });
 
 
