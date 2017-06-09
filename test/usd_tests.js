@@ -13,8 +13,6 @@ const {Resoltzapi, db} = require('../app/models/article');
 
 chai.use(chaiHttp);
 
-
-
 describe('GET /api/users', function() {
   it('happy path to get json with all users', function(done) {
     chai.request(server)

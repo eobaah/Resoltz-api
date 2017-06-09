@@ -11,16 +11,7 @@ const Resoltzapi = {
   getAllUsers: () => {
     return db.any(`SELECT * FROM user_details ORDER BY dob ASC`,[])
   },
-  //
-  // createUser: ({Gender}) => {
-  //   console.log( "======> gender", Gender )
-  //   return db.any(
-  //     `INSERT INTO user_details
-  //       ( Gender )
-  //     VALUES
-  //       ( $1 )`,
-  //     [Gender]
-  //   )
+
   createUser: ( { Gender, Dob, CurrentWeight, GoalWeight, HeightFeet, HeightInches, Goal, Intensity, Referrer, ProfileImageUri, FavoriteActivities  } ) => {
     return db.any(
       `INSERT INTO user_details
@@ -28,6 +19,23 @@ const Resoltzapi = {
       VALUES
         ( $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`,
       [ Gender, Dob, CurrentWeight, GoalWeight, HeightFeet, HeightInches, Goal, Intensity, Referrer, ProfileImageUri, FavoriteActivities ]
+    )
+  },
+
+  editUser: ( userid, user ) => {
+    return db.oneOrNone(
+      `UPDATE user_details
+      SET Gender=$2, Dob=$3, CurrentWeight=$4, GoalWeight=$5, HeightFeet=$6, HeightInches=$7, Goal=$8, Intensity=$9, Referrer=$10, ProfileImageUri=$11, FavoriteActivities=$12
+      WHERE userid=$1`,
+      [ userid, user.Gender, user.Dob, user.CurrentWeight, user.GoalWeight, user.HeightFeet, user.HeightInches, user.Goal, user.Intensity, user.Referrer, user.ProfileImageUri, user.FavoriteActivities ]
+    )
+  },
+
+  removeUser: ( userid ) => {
+    return db.none(
+      `DELETE FROM user_details
+      WHERE userid=$1`,
+      [ userid ]
     )
   },
 

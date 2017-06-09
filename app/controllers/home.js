@@ -19,19 +19,23 @@ router.get('/api/users', function (request, response, next) {
 });
 
 router.post('/api/users/create', function (request, response, next) {
-  const user = request.body
+  let user = request.body
   Resoltzapi.createUser(user)
     .then( user => response.redirect('/api/users'));
 });
 
+router.put('/api/users/edit/:userid', function (request, response, next) {
+  let userid = request.params.userid
+  let user = request.body
+  Resoltzapi.editUser( userid, user )
+    .then( user => response.redirect('/api/users'));
+});
 
-// router.get('/api/users', function (request, response, next) {
-//   Resoltzapi.getAllUsers()
-//     .then( users => {
-//       response.send( users );
-//     })
-//     .catch(next)
-// });
+router.delete('/api/users/delete/:userid', function (request, response, next) {
+  let userid = request.params.userid
+  Resoltzapi.removeUser( userid )
+    .then( user => response.redirect('/api/users'));
+});
 
 
 router.get('/api/measurements', function (request, response, next) {
