@@ -46,10 +46,48 @@ router.get('/api/measurements', function (request, response, next) {
     .catch(next)
 });
 
+router.post('/api/measurements/create', function (request, response, next) {
+  let user = request.body
+  Resoltzapi.createUserMeasurements(data)
+    .then( data => response.redirect('/api/measurements'));
+});
+
+router.put('/api/measurements/edit/:userid', function (request, response, next) {
+  let userid = request.params.userid
+  let data = request.body
+  Resoltzapi.editUserMeasurements( userid, data )
+    .then( data => response.redirect('/api/measurements'));
+});
+
+router.delete('/api/measurements/delete/:userid', function (request, response, next) {
+  let userid = request.params.userid
+  Resoltzapi.removeUser( userid )
+    .then( user => response.redirect('/api/measurements'));
+});
+
 router.get('/api/school', function (request, response, next) {
   Resoltzapi.getAllUsersSchool()
     .then( users => {
       response.send( users );
     })
     .catch(next)
+});
+
+router.post('/api/school/create', function (request, response, next) {
+  let user = request.body
+  Resoltzapi.createUserSchool(data)
+    .then( data => response.redirect('/api/school'));
+});
+
+router.put('/api/school/edit/:userid', function (request, response, next) {
+  let userid = request.params.userid
+  let data = request.body
+  Resoltzapi.editUserSchool( userid, data )
+    .then( data => response.redirect('/api/school'));
+});
+
+router.delete('/api/school/delete/:userid', function (request, response, next) {
+  let userid = request.params.userid
+  Resoltzapi.removeUserSchool( userid )
+    .then( user => response.redirect('/api/school'));
 });
